@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import * as s from './style';
+
 import { setModalState } from '../../redux/slices/modalSlice';
-import Modal from '../../components/Modal';
 import { setUser } from '../../redux/slices/userSlice';
+
+import Modal from '../../components/Modal';
+import Header from '../../components/Header';
+
+import * as s from './style';
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -41,7 +45,7 @@ export default function HomePage() {
   if (!user) {
     content = null;
   } else {
-    // TODO content = ;
+    content = <Header />;
   }
 
   return (
