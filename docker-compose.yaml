@@ -1,0 +1,22 @@
+version: '3'
+services:
+  code_leap_front:
+    container_name: code_leap_front
+    build: ./
+    image: code_leap_front
+    volumes:
+      - build_react:/var/www/html
+  
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - build_react:/var/www/html
+    depends_on:
+      - code_leap_front
+
+volumes:
+  build_react:
