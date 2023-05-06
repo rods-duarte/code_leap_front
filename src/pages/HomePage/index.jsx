@@ -8,6 +8,7 @@ import Modal from '../../components/Modal';
 import Header from '../../components/Header';
 
 import * as s from './style';
+import Posts from '../../components/Posts';
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -45,7 +46,12 @@ export default function HomePage() {
   if (!user) {
     content = null;
   } else {
-    content = <Header />;
+    content = (
+      <>
+        <Header />
+        <Posts />
+      </>
+    );
   }
 
   return (
