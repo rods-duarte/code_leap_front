@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 
-import * as s from './style';
 import PostButtons from '../PostButtons';
+
+import * as s from './style';
 
 export default function Post({ data }) {
   const { name } = useSelector((store) => store.user);
@@ -9,13 +10,16 @@ export default function Post({ data }) {
   const timePassedInSeconds =
     (new Date().getTime() - new Date(data.created_datetime).getTime()) / 1000;
 
-  function formatTime(timeInSeconds) {
+  const formatTime = (timeInSeconds) => {
     const minuteInSeconds = 60;
     const hourInSeconds = 60 * minuteInSeconds;
     const dayInSeconds = 24 * hourInSeconds;
 
+    if (timeInSeconds < 1) {
+      return 'Just now';
+    }
     if (timeInSeconds < minuteInSeconds) {
-      return `${timeInSeconds} seconds ago`;
+      return `${Math.floor(timeInSeconds)} seconds ago`;
     }
     if (timeInSeconds < hourInSeconds) {
       const minutes = Math.floor(timeInSeconds / minuteInSeconds);
@@ -27,7 +31,7 @@ export default function Post({ data }) {
     }
     const days = Math.floor(timeInSeconds / dayInSeconds);
     return `${days} ${days === 1 ? 'day' : 'days'} ago`;
-  }
+  };
 
   return (
     <s.Post id={data.id}>
