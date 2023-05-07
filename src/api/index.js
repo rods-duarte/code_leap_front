@@ -9,6 +9,11 @@ async function getPosts() {
   return posts;
 }
 
+async function createPost(postData) {
+  await baseAPI.post('/', postData);
+}
+
 export const api = {
   getPosts,
+  createPost,
 };

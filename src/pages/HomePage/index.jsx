@@ -6,15 +6,16 @@ import { setUser } from '../../redux/slices/userSlice';
 
 import Modal from '../../components/Modal';
 import Header from '../../components/Header';
+import Posts from '../../components/Posts';
+import CreatePost from '../../components/CreatePost';
 
 import * as s from './style';
-import Posts from '../../components/Posts';
 
 export default function HomePage() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state);
 
-  function checkUserData() {
+  const checkUserData = () => {
     const userData = JSON.parse(localStorage.getItem('user'));
     if (!userData) {
       dispatch(
@@ -27,7 +28,7 @@ export default function HomePage() {
     }
 
     dispatch(setUser(userData));
-  }
+  };
 
   useEffect(() => {
     checkUserData();
@@ -49,6 +50,7 @@ export default function HomePage() {
     content = (
       <>
         <Header />
+        <CreatePost />
         <Posts />
       </>
     );
