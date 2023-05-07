@@ -51,4 +51,19 @@ export const Textarea = styled.textarea`
   resize: none;
 `;
 
+export const ConfirmButton = styled.button`
+  width: 120px;
+  height: 32px;
+  background-color: #7695ec;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  margin-left: auto;
+  opacity: 0.8;
+
+  cursor: pointer;
+
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+`;
+
 export const Label = styled.label``;
