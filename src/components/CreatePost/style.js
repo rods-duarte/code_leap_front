@@ -8,6 +8,7 @@ export const CreatePost = styled.div`
   padding: 0 15px;
   padding-bottom: 20px;
   padding-top: 20px;
+  margin-top: 24px;
 
   border: 1px solid #999999;
   border-radius: 16px;
