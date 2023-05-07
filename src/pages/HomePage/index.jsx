@@ -15,7 +15,7 @@ export default function HomePage() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state);
 
-  function checkUserData() {
+  const checkUserData = () => {
     const userData = JSON.parse(localStorage.getItem('user'));
     if (!userData) {
       dispatch(
@@ -28,7 +28,7 @@ export default function HomePage() {
     }
 
     dispatch(setUser(userData));
-  }
+  };
 
   useEffect(() => {
     checkUserData();

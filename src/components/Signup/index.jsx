@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import * as s from './style';
+import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/userSlice';
+
+import * as s from './style';
 
 export default function SignUp() {
   const dispatch = useDispatch();
