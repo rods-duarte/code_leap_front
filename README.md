@@ -2,6 +2,7 @@
 
 This project is a social web app where users can create posts. You can access <a href="http://167.99.234.217/">here</a>.
 
+<img style='margin: 5px;' src='https://wakatime.com/badge/user/399874f0-4f73-4301-b37a-0005354c7a68/project/f3bb008e-bd2f-4583-bcbe-271fa7c5a8f3.svg'>
 <br>
 
 
