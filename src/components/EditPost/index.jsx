@@ -9,10 +9,18 @@ import * as s from './style';
 
 export default function EditPost({ data }) {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  const [inputData, setInputData] = useState({ title: null, content: null });
-  const isDisable = !inputData.title || !inputData.content;
   const { posts } = useSelector((store) => store.posts);
+  const currentPost = posts.find((post) => post.id === data.postId);
+  const [loading, setLoading] = useState(false);
+  const [inputData, setInputData] = useState({
+    title: currentPost.title,
+    content: currentPost.content,
+  });
+  const isDisable =
+    !inputData.title ||
+    !inputData.content ||
+    (inputData.title === currentPost.title &&
+      inputData.content === currentPost.content);
 
   const closeModal = () => {
     dispatch(
@@ -65,7 +73,7 @@ export default function EditPost({ data }) {
           type="text"
           name="title"
           placeholder="Hello world"
-          value={data.title}
+          value={inputData.title}
           disabled={loading}
           onChange={handleInputChange}
         />
@@ -75,7 +83,7 @@ export default function EditPost({ data }) {
           type="text"
           name="content"
           placeholder="Content here"
-          value={data.content}
+          value={inputData.content}
           disabled={loading}
           onChange={handleInputChange}
         />
