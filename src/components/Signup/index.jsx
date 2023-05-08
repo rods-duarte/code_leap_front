@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/userSlice';
 
 import * as s from './style';
+import { setModalState } from '../../redux/slices/modalSlice';
 
 export default function SignUp() {
   const dispatch = useDispatch();
@@ -13,6 +14,13 @@ export default function SignUp() {
     dispatch(
       setUser({
         name: data.name,
+      })
+    );
+
+    dispatch(
+      setModalState({
+        isOpen: false,
+        content: null,
       })
     );
   };
