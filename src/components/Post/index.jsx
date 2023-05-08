@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useEffect, useRef, useState } from 'react';
 
 import PostButtons from '../PostButtons';
 
@@ -6,6 +7,8 @@ import * as s from './style';
 
 export default function Post({ data }) {
   const { name } = useSelector((store) => store.user);
+  const [isVisible, setIsVisible] = useState(false);
+  const postRef = useRef(null);
   const isAuthor = name === data.username;
   const timePassedInSeconds =
     (new Date().getTime() - new Date(data.created_datetime).getTime()) / 1000;
@@ -33,8 +36,22 @@ export default function Post({ data }) {
     return `${days} ${days === 1 ? 'day' : 'days'} ago`;
   };
 
+  const handleScroll = () => {
+    const { top } = postRef.current.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (top < windowHeight * 0.8) {
+      setIsVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <s.Post id={data.id}>
+    <s.Post ref={postRef} id={data.id} className={isVisible ? 'visible' : ''}>
       <s.Header>
         <h1>{data.title}</h1>
         {isAuthor && <PostButtons postId={data.id} />}

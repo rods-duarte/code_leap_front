@@ -10,6 +10,26 @@ export const Post = styled.div`
 
   border: 1px solid #999999;
   border-radius: 16px;
+
+  opacity: 0;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      top: 100px;
+    }
+
+    100% {
+      opacity: 1;
+      top: 0;
+    }
+  }
+
+  &.visible,
+  &:first-child {
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
 `;
 
 export const Header = styled.header`
