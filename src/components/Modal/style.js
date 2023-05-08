@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   top: 0;
-  background-color: #dddddd;
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 4;
   position: fixed;
   display: flex;
@@ -13,8 +13,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  min-width: fit-content;
-  max-width: 100%;
+  width: 80%;
   min-height: fit-content;
   border: 1px solid #cccccc;
   border-radius: 16px;

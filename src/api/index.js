@@ -13,7 +13,17 @@ async function createPost(postData) {
   await baseAPI.post('/', postData);
 }
 
+async function updatePost(postId, postData) {
+  await baseAPI.patch(`/${postId}/`, postData);
+}
+
+async function deletePost(postId) {
+  await baseAPI.delete(`/${postId}/`);
+}
+
 export const api = {
   getPosts,
   createPost,
+  updatePost,
+  deletePost,
 };
