@@ -4,8 +4,8 @@ const baseAPI = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
-async function getPosts() {
-  const posts = await baseAPI.get('/');
+async function getPosts(offset = 10) {
+  const posts = await baseAPI.get(`/?limit=10&offset=${offset}`);
   return posts;
 }
 
