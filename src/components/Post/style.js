@@ -41,6 +41,7 @@ export const Content = styled.div`
   padding: 0 15px;
 
   font-size: 18px;
+  word-wrap: break-word;
 `;
 
 export const Author = styled.div`
