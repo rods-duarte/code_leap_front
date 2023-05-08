@@ -9,7 +9,7 @@ import * as s from './style';
 
 export default function Posts() {
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const { posts } = useSelector((store) => store.posts);
 
   const getPosts = (pageNum) => {
