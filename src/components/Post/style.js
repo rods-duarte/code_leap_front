@@ -54,6 +54,7 @@ export const Header = styled.header`
   left: 0;
   background-color: #7695ec;
   color: #fff;
+  word-wrap: break-word;
 
   display: flex;
   justify-content: space-between;
