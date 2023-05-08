@@ -34,17 +34,8 @@ export default function HomePage() {
     checkUserData();
   }, []);
 
-  if (user?.name != null) {
-    dispatch(
-      setModalState({
-        isOpen: false,
-        modalContent: null,
-      })
-    );
-  }
-
   let content;
-  if (!user) {
+  if (!user?.name) {
     content = null;
   } else {
     content = (
