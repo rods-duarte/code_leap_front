@@ -10,16 +10,16 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      if (action.payload.name == null) {
-        return;
-      }
-
       state.name = action.payload.name;
       localStorage.setItem('user', JSON.stringify(state));
+    },
+    resetUser: (state, action) => {
+      state.name = null;
+      localStorage.removeItem('user');
     },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 
 export default userSlice.reducer;
