@@ -48,26 +48,27 @@ npm run start
 5. Access on port 3000 
 
 ## How to run with Docker
-1. Install Docker (https://docs.docker.com/engine/install/ubuntu/)
-2. If you can't run ```docker run``` without ```sudo```, run:
+1. Clone this repository
+2. Install Docker (https://docs.docker.com/engine/install/ubuntu/)
+3. If you can't run ```docker run``` without ```sudo```, run:
 
 ```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-3. Install ```docker-compose```
+4. Install ```docker-compose```
 
 ```bash
 sudo apt install docker-compose
 ```
 
-4. Populate `.env` file based on `.env.example`. `REACT_APP_API_BASE_URL` should point to your API (`https://dev.codeleap.co.uk/careers/`)
+5. Populate `.env` file based on `.env.example`. `REACT_APP_API_BASE_URL` should point to your API (`https://dev.codeleap.co.uk/careers/`)
 
-5. On the project path, run:
+6. On the project path, run:
 
 ```bash
 npm run start:docker
 ```
 
-6. Access on port 80
+7. Access on port 80
