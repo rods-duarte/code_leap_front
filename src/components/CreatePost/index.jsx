@@ -7,6 +7,7 @@ import { setPosts } from '../../redux/slices/postsSlice';
 export default function CreatePost() {
   const dispatch = useDispatch();
   const { name } = useSelector((store) => store.user);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     title: '',
     content: '',
@@ -15,6 +16,7 @@ export default function CreatePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     api
       .createPost({ ...data, username: name })
       .then(() => {
@@ -24,6 +26,7 @@ export default function CreatePost() {
       })
       .finally(() => {
         setData({ title: '', content: '' });
+        setLoading(false);
       });
   };
 
@@ -42,6 +45,7 @@ export default function CreatePost() {
           name="title"
           placeholder="Hello world"
           value={data.title}
+          disabled={loading}
           onChange={handleInputChange}
         />
         <s.Label htmlFor="post_content">Content</s.Label>
@@ -51,9 +55,10 @@ export default function CreatePost() {
           name="content"
           placeholder="Content here"
           value={data.content}
+          disabled={loading}
           onChange={handleInputChange}
         />
-        <s.ConfirmButton type="submit" disabled={isDisable}>
+        <s.ConfirmButton type="submit" disabled={isDisable || loading}>
           Create
         </s.ConfirmButton>
       </s.Form>
