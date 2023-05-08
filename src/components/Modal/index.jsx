@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import * as s from './style';
 import SignUp from '../Signup';
 import DeletePost from '../DeletePost';
+import EditPost from '../EditPost';
 
 export default function Modal() {
   const { isOpen, modalContent, data } = useSelector((state) => state.modal);
@@ -14,6 +15,8 @@ export default function Modal() {
     content = <SignUp />;
   } else if (modalContent === 'deletePost') {
     content = <DeletePost data={data} />;
+  } else if (modalContent === 'editPost') {
+    content = <EditPost data={data} />;
   }
 
   return (

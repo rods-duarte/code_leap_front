@@ -19,14 +19,22 @@ export default function PostButtons({ postId }) {
     );
   };
 
-  function handleEdit() {}
+  const handleEdit = () => {
+    dispatch(
+      setModalState({
+        isOpen: true,
+        modalContent: 'editPost',
+        data: { postId },
+      })
+    );
+  };
 
   return (
     <s.Buttons>
       <button type="button" onClick={handleDelete}>
         <TbTrashXFilled />
       </button>
-      <button type="button">
+      <button type="button" onClick={handleEdit}>
         <IoCreate />
       </button>
     </s.Buttons>

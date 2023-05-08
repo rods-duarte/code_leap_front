@@ -13,8 +13,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  min-width: fit-content;
-  max-width: 100%;
+  width: 80%;
   min-height: fit-content;
   border: 1px solid #cccccc;
   border-radius: 16px;
