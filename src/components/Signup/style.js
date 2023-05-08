@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Content = styled.div`
-  min-width: 500px;
+  width: 100%;
   height: 205px;
   display: flex;
   flex-direction: column;
@@ -37,6 +37,8 @@ export const EnterButton = styled.button`
   line-height: 19px;
 
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+
+  cursor: pointer;
 `;
 
 export const Title = styled.h1`
