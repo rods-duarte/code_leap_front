@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DeletePost = styled.div`
+  width: 100%;
   padding: 25px;
   display: flex;
   flex-direction: column;
