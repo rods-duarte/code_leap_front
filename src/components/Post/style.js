@@ -25,10 +25,24 @@ export const Post = styled.div`
     }
   }
 
+  @keyframes flash {
+    0% {
+      background-color: #0000;
+    }
+
+    100% {
+      background-color: #7695ec;
+    }
+  }
+
   &.visible,
   &:first-child {
     opacity: 1;
     animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  &.update > header {
+    animation: flash 0.5s ease-out forwards;
   }
 `;
 

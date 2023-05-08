@@ -9,6 +9,7 @@ export default function Post({ data }) {
   const { name } = useSelector((store) => store.user);
   const [isVisible, setIsVisible] = useState(false);
   const postRef = useRef(null);
+  const isInitialRender = useRef(true);
   const isAuthor = name === data.username;
   const timePassedInSeconds =
     (new Date().getTime() - new Date(data.created_datetime).getTime()) / 1000;
@@ -49,6 +50,14 @@ export default function Post({ data }) {
       setIsVisible(true);
     }
   };
+
+  useEffect(() => {
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
+    }
+    postRef.current.classList.add('update');
+  }, [data]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
