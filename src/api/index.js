@@ -5,7 +5,6 @@ const baseAPI = axios.create({
 });
 
 async function getPosts(offset = 0) {
-  console.log(offset);
   const posts = await baseAPI.get(`/?limit=10&offset=${offset}`);
   return posts;
 }
