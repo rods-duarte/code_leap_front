@@ -37,7 +37,12 @@ export default function Post({ data }) {
   };
 
   const handleScroll = () => {
+    if (!postRef.current) {
+      return;
+    }
+
     const { top } = postRef.current.getBoundingClientRect();
+
     const windowHeight = window.innerHeight;
 
     if (top < windowHeight * 0.8) {

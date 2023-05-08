@@ -20,7 +20,7 @@ export default function Posts() {
 
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop ===
+      window.innerHeight + document.documentElement.scrollTop >=
       document.documentElement.offsetHeight
     ) {
       setPage((prev) => prev + 1);
@@ -36,7 +36,9 @@ export default function Posts() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const content = posts.map((post) => <Post key={post.id} data={post} />);
+  const content = posts.map((post, i) => (
+    <Post key={`id-${post.id}-index-${i}`} data={post} />
+  ));
 
   return <s.Posts>{content}</s.Posts>;
 }
