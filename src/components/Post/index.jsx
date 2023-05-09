@@ -37,7 +37,7 @@ export default function Post({ data }) {
     return `${days} ${days === 1 ? 'day' : 'days'} ago`;
   };
 
-  const handleScroll = () => {
+  const checkVisibility = () => {
     if (!postRef.current) {
       return;
     }
@@ -52,6 +52,8 @@ export default function Post({ data }) {
   };
 
   useEffect(() => {
+    checkVisibility();
+
     if (isInitialRender.current) {
       isInitialRender.current = false;
       return;
@@ -60,8 +62,8 @@ export default function Post({ data }) {
   }, [data]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', checkVisibility);
+    return () => window.removeEventListener('scroll', checkVisibility);
   }, []);
 
   return (
